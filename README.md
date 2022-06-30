@@ -11,13 +11,15 @@ Let's say your team has deployed FooSoft 8 via `optional_installs` with the pack
 
 ## Modes
 
-* `munki-ssm-editor add PackageName` Adds the title as though the user chose to install it in Managed Software Center.
-* `munki-ssm-editor remove PackageName` Remove the title from the install list.
-* `munki-ssm-editor remove --uninstall PackageName` Remove from the install list _and_, if it was in the install list, add it to the uninstall list.
-* `munki-ssm-editor replace OldName NewName` If `OldName` was in the install list, swap it with `NewName`.
-* `munki-ssm-editor replace --uninstall OldName NewName` - If `OldName` was in the install list, swap it with `NewName`, and add `OldName` to the uninstall list.
+| Command | Description |
+| --- | --- |
+| `munki-ssm-editor add PackageName` | Adds the title as though the user chose to install it in Managed Software Center |
+| `munki-ssm-editor remove PackageName` | Remove the title from the install list |
+| `munki-ssm-editor remove --uninstall PackageName` | Remove from the install list _and_, if it was in the install list, add it to the uninstall list |
+| `munki-ssm-editor replace OldName NewName` | If `OldName` was in the install list, swap it with `NewName` |
+| `munki-ssm-editor replace --uninstall OldName NewName` | If `OldName` was in the install list, swap it with `NewName`, and add `OldName` to the uninstall list |
 
-This tool requires `root` to run so you'll need some way to actually deploy and run it. We use a Jamf policy, but you could use a Munki `nopkg` "package" as well.
+This tool requires `root` to run so you'll need some way to actually deploy and run it. We use a Jamf policy, but you could use a Munki `nopkg` "package" as well. It's designed to be (somewhat) idempotent, so you could have one script that just gets re-ran every week, and you add all your deprecations / bumps to it.
 
 This was written in Swift to reduce client-side dependencies.
 
